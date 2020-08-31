@@ -1,0 +1,171 @@
+// 0=Kinect; 1=PrimeSense; 2=KinectOne; 3=BinaryDumpReader;4=NetworkSensor;5=IntelSensor; 6=RealSense; 7=StructureSensor;8=SensorDataReader;9=Data;
+s_sensorIdx = 9;
+
+//fountail
+s_sceneName = "fountain";
+//s_binaryDumpSensorFile[0] = "data/fountain_all";
+s_binaryDumpSensorFile[0] = "D:/dataset/fountain_all";
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// parameters for our implementation
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Optimization index
+// 0 = Our optimization
+// 1 = Rigid warp
+// 2 = None
+s_optimizationIdx = 0;
+
+//exposure
+s_gain = 1;
+s_exposure = 200;
+s_autoExposureEnabled = false;
+s_autoWhiteBalanceEnabled = false;
+
+s_renderToFile = false;	//for making paper videos: renders all input/raycasts etc. to images
+s_renderToFileDir = "c:/output/fountain4/";
+
+// Enable voxel rendering or not
+s_voxelRenderingEnabled  = false;
+
+// update texture per keyframe
+s_texKeyFrames = 2;
+
+// used when we use record files
+s_nVideoFrame = 700;
+//s_nVideoFrame = 0;
+s_startFrame = 0;
+
+// Texture width
+s_texPoolPatchWidth = 4;
+
+// The number of preallocated tiles in GPU
+s_texPoolNumPatches =2000000;
+//8000000
+s_numTextureTileWidth = 1024;
+
+// About blending weights
+s_texIntegrationWeightMax = 255;
+s_texIntegrationWeightSample = 30; 
+
+// parameters for mask
+s_erodeSigmaStretch = 2.f;
+s_erodeIterStretchBox = 0;
+s_erodeIterStretchGauss = 0;
+s_erodeIterOccDepth = 4;
+
+// Mask parameters
+s_texAngleThreshold_depth = 0.05f;
+s_texAngleThreshold_update = 0.5f;
+
+s_screenBoundaryWidth = 40;
+
+// weight for blending
+s_sigmaAngle = 0.5;
+s_sigmaDepth = 0.5;
+s_sigmaArea = 1.0;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Screen parameters
+s_windowWidth = 640;		//render window width
+s_windowHeight = 480;		//render window height
+s_adapterWidth = 640;		//input depth gets re-sampled to this width
+s_adapterHeight = 480;		//input depth gets re-sampled to this height
+
+s_sensorDepthMax = 3.0f;	//maximum sensor depth in meter
+s_sensorDepthMin = 0.4f;	//minimum sensor depth in meter
+
+// cropping options for PrimeSense & Asus Xtion Pro
+s_enableColorCropping = false;
+s_colorCropX = 320;
+s_colorCropY = 272;
+s_colorCropWidth = 640;
+s_colorCropHeight = 480;
+
+// sdf and hash settings
+//s_SDFVoxelSize = 0.01;				//voxel size in meter
+//s_SDFMarchingCubeThreshFactor = 10.0f;	//marching cube thresh: s_SDFMarchingCubeThresh = s_SDFMarchingCubeThreshFactor*s_SDFVoxelSize
+//s_SDFTruncation = 0.05f;				//truncation in meter (5.0f*s_SDFVoxelSize )
+//s_SDFTruncationScale = 0.025f;			//truncation scale in meter per meter (2.5f*s_SDFVoxelSize )
+
+s_SDFVoxelSize = 0.004;				//voxel size in meter
+s_SDFMarchingCubeThreshFactor = 10.0f;	//marching cube thresh: s_SDFMarchingCubeThresh = s_SDFMarchingCubeThreshFactor*s_SDFVoxelSize
+s_SDFTruncation = 0.02f;				//truncation in meter (5.0f*s_SDFVoxelSize )
+s_SDFTruncationScale = 0.01f;			//truncation scale in meter per meter (2.5f*s_SDFVoxelSize )
+s_SDFMaxIntegrationDistance = 3.0f;		//maximum integration in meter
+s_SDFIntegrationWeightSample = 3;		//weight for an integrated depth value
+s_SDFIntegrationWeightMax = 255;		//maximum integration weight for a voxel
+
+// s_SDFBlockSize is pound defined (SDF_BLOCK_SIZE)
+// s_hashBucketSize is pound defined (HASH_BUCKET_SIZE)
+s_hashNumBuckets = 200000;				//smaller voxels require more space
+s_hashNumSDFBlocks = 200000;			//smaller voxels require more space
+s_hashMaxCollisionLinkedListSize = 5;
+
+// raycast
+s_SDFRayIncrementFactor = 0.8f;			//(don't touch) s_SDFRayIncrement = s_SDFRayIncrementFactor*s_SDFTrunaction;
+s_SDFRayThresSampleDistFactor = 50.5f;	//(don't touch) s_SDFRayThresSampleDist = s_SDFRayThresSampleDistFactor*s_rayIncrement;
+s_SDFRayThresDistFactor = 50.0f;		//(don't touch) s_SDFRayThresDist = s_SDFRayThresSampleDistFactor*s_rayIncrement;
+s_SDFUseGradients 		= false;		//analytic gradients for rendering
+s_binaryDumpSensorUseTrajectory = false;
+s_binaryDumpSensorUseTrajectoryOnlyInit = false;	//only valid if prev is true; precomputed traj for ICP, which is run
+
+// filtering
+s_depthSigmaD = 2.0f;	//bilateral filter sigma domain
+s_depthSigmaR = 0.1f;	//bilateral filter sigma range
+s_depthFilter = true;	//bilateral filter enabled depth
+
+s_colorSigmaD = 1.0f;	//bilateral filter sigma domain
+s_colorSigmaR = 0.08f;	//bilateral filter sigma range
+s_colorFilter = false;	//bilateral filter enabled depth
+
+s_integrationEnabled		= true;
+s_trackingEnabled		= true;
+s_timingsDetailledEnabled   	= false;	//enable timing output
+s_timingsDetailledEnabledOurs   = false;	//enable timing output (for our implementation)
+s_timingsTotalEnabled		= false;	//enable timing output
+s_garbageCollectionEnabled	= false;
+s_garbageCollectionStarve	= 15;		//decrement the voxel weight every n'th frame
+
+// rendering
+s_materialShininess 	= 16.0f;
+s_materialAmbient   	= 0.75f 0.65f 0.5f 1.0f;
+s_materialDiffuse 		= 1.0f 0.9f 0.7f 1.0f;
+s_materialSpecular 		= 1.0f 1.0f 1.0f 1.0f;
+s_lightAmbient 			= 0.4f 0.4f 0.4f 1.0f;
+s_lightDiffuse 			= 0.6f 0.52944f 0.4566f 0.6f;
+s_lightSpecular 		= 0.3f 0.3f 0.3f 1.0f;
+s_lightDirection 		= 0.0f -1.0f 2.0f;
+
+s_RenderMode = 1;
+
+s_useColorForRendering = false;
+s_playData = true;
+
+s_renderingDepthDiscontinuityThresOffset = 0.012f;	// discontinuity offset in meter
+s_renderingDepthDiscontinuityThresLin	 = 0.001f;	// additional discontinuity threshold per meter
+s_remappingDepthDiscontinuityThresOffset = 0.012f;	// discontinuity offset in meter
+s_remappingDepthDiscontinuityThresLin	 = 0.016f;	// additional discontinuity threshold per meter
+
+s_bUseCameraCalibration = false;
+s_marchingCubesMaxNumTriangles = 2500000; // max buffer size for marching cube
+							    
+//streaming parameters
+s_streamingEnabled = false;
+s_streamingVoxelExtents = 1.0f 1.0f 1.0f;
+s_streamingGridDimensions = 513 513 513; // dimensions have to be odd (number of samples)
+s_streamingMinGridPos = -256 -256 -256;
+s_streamingInitialChunkListSize = 2000;
+s_streamingRadius = 4.0f; // Depends on DepthMin and DepthMax			WARNING: PARAMETER NOT USED; ARE COMPUTED AUTOMATICALLY
+s_streamingPos = 0.0f 0.0f 3.0f; // Depends on DepthMin and DepthMax	WARNING: PARAMETER NOT USED; ARE COMPUTED AUTOMATICALLY
+s_streamingOutParts = 80;	// number of frames required to sweep through the entire hash
+
+//recording of the input data
+s_recordData = false;			// master flag for data recording: enables or disables data recording
+s_recordCompression = true;		//if recoding is enabled; then compression is used (.sens instead of .sensor)
+s_recordDataFile = "Dump/test.sens";
+s_reconstructionEnabled = true;
+
+s_offlineProcessing = true;			//slower, but makes sure that all voxels are alllocated and streaming all blocks is enforced
+
+
