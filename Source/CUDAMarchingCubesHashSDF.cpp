@@ -255,7 +255,7 @@ void CUDAMarchingCubesHashSDF::copyTrianglesToCPU(TexPoolData texPoolData, TexPo
 			mtlout.close();
 
 			cv::Mat textureMat(textureTileWidth * (texPoolParams.m_texturePatchWidth + 2), textureTileWidth * (texPoolParams.m_texturePatchWidth + 2), CV_8UC3, h_textureImg);
-			cv::cvtColor(textureMat, textureMat, CV_RGB2BGR);
+			cv::cvtColor(textureMat, textureMat, cv::COLOR_RGB2BGR);
 			cv::imwrite(folderTextureFileName, textureMat);
 
 			printf("Export texture\n");
@@ -341,7 +341,7 @@ void CUDAMarchingCubesHashSDF::saveMesh(const std::string& filename, const mat4f
 	GlobalAppState::get().export_mtlfilename.pop_back();
 
 	std::cout << "saving mesh (" << actualFilename << ") ...";
-	MeshIOf::saveToFile(actualFilename, m_meshData, mtlfilename);
+	//MeshIOf::saveToFile(actualFilename, m_meshData, mtlfilename);
 	std::cout << "done!" << std::endl;
 
 	m_meshOnlyData.removeDuplicateVertices();

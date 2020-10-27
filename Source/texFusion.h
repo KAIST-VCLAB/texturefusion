@@ -49,6 +49,8 @@
 
 #include "modeDefine.h"
 
+#pragma comment(lib, "legacy_stdio_definitions.lib")
+
 #ifdef KINECT
 #pragma comment(lib, "Kinect10.lib")
 #endif

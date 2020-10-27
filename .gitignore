@@ -1,0 +1,10 @@
+.vs/
+*.user
+CompiledShaders/
+*.pdb
+zParametersManolisScan.txt
+*.deps
+*.cache
+*.log
+*.tlog
+*FileListAbsolute.txt

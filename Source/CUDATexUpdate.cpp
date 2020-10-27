@@ -132,7 +132,7 @@ void CUDATexUpdate::extractTexture() {
 		data[i] = vec3f(h_textureImg[i]) / 255.f;
 	}
 	cv::Mat temp(maxTextureWidth *  m_texPoolParams.m_texturePatchWidth, maxTextureWidth *  m_texPoolParams.m_texturePatchWidth, CV_8UC3, h_textureImg);
-	cv::cvtColor(temp, temp, CV_RGB2BGR);
+	cv::cvtColor(temp, temp, cv::COLOR_RGB2BGR);
 	cv::imshow("texture", temp);
 	cv::imwrite("Scans/texture.png", temp);
 

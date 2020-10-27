@@ -94,6 +94,15 @@ HRESULT SensorDataReaderZhou::createFirstConnected()
 	return S_OK;
 }
 
+ml::mat4f SensorDataReaderZhou::getRigidTransform(int offset) const
+{
+	unsigned int idx = m_currFrame - 1 + offset;
+	if (idx >= m_sensorData->m_frames.size()) throw MLIB_EXCEPTION("invalid trajectory index " + std::to_string(idx));
+	const mat4f& transform = m_sensorData->m_frames[idx].getCameraToWorld();
+	return transform;
+	//return m_data.m_trajectory[idx];
+}
+
 HRESULT SensorDataReaderZhou::processDepth()
 {
 	//if (m_currFrame >= m_numFrames)

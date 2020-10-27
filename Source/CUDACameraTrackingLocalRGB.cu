@@ -226,7 +226,7 @@ extern "C" void renderCorrespondenceLocal2CUDA(unsigned int imageWidth, unsigned
 	dim3 block(threadPerBlock);
 	dim3 grid((imageWidth * imageHeight + threadPerBlock - 1) / threadPerBlock);
 
-	renderCorrespondenceLocal2_kernel << < grid, block >> > (imageWidth, imageHeight, output, cameraTrackingInput, float3x3(intrinsics), cameraTrackingIParameters, d_x_rot, d_x_trans);
+	renderCorrespondenceLocal2_kernel <<<grid, block>>> (imageWidth, imageHeight, output, cameraTrackingInput, float3x3(intrinsics), cameraTrackingIParameters, d_x_rot, d_x_trans);
 
 }
 
@@ -247,7 +247,7 @@ extern "C" void setTransform(float3 *d_xold_rot, float3 *d_xold_trans, float3 in
 	const int nodeN = cameraTrackingParameters.nodeWidth * cameraTrackingParameters.nodeHeight;
 	const int blockNodeN = (nodeN + THREAD_PER_BLOCK - 1) / THREAD_PER_BLOCK;
 
-	setTransform_kernel << <blockNodeN, THREAD_PER_BLOCK >> > (d_xold_rot, d_xold_trans, initrot, inittrans, nodeN);
+	setTransform_kernel <<<blockNodeN, THREAD_PER_BLOCK >>> (d_xold_rot, d_xold_trans, initrot, inittrans, nodeN);
 
 }
 
@@ -343,7 +343,7 @@ extern "C" void upsampleGrid(float3 *d_xold_rot, float3 *d_xold_trans, float3 *d
 	const int nodeNCur = nodeWCur * nodeHCur;
 	const int blockNodeN = (nodeNCur + THREAD_PER_BLOCK - 1) / THREAD_PER_BLOCK;
 
-	upsampleGrid_kernel << <blockNodeN, THREAD_PER_BLOCK >> > (d_xold_rot, d_xold_trans, d_x_rot, d_x_trans, offsetCur, offset, cellWHCur, cellWH, nodeWCur, nodeW, nodeHCur, nodeH);
+	upsampleGrid_kernel <<<blockNodeN, THREAD_PER_BLOCK >>> (d_xold_rot, d_xold_trans, d_x_rot, d_x_trans, offsetCur, offset, cellWHCur, cellWH, nodeWCur, nodeW, nodeHCur, nodeH);
 
 }
 
@@ -366,7 +366,7 @@ extern "C" void updateTransforms(float3 *d_x_rot, float3 *d_x_trans, float3 *d_x
 
 	const int blockNodeN = (nodeN + THREAD_PER_BLOCK - 1) / THREAD_PER_BLOCK;
 
-	updateTransforms_kernel << <blockNodeN, THREAD_PER_BLOCK >> > (d_x_rot, d_x_trans, d_xOld_rot, d_xOld_trans, d_xStep_rot, d_xStep_trans, nodeN);
+	updateTransforms_kernel <<<blockNodeN, THREAD_PER_BLOCK >>> (d_x_rot, d_x_trans, d_xOld_rot, d_xOld_trans, d_xStep_rot, d_xStep_trans, nodeN);
 
 }
 
@@ -425,6 +425,6 @@ extern"C" void renderMotionMapCUDA(float * d_x_map, float3 *d_x_rot, float3 *d_x
 	const dim3 block (THREAD_PER_BLOCK, THREAD_PER_BLOCK);
 	const dim3 grid((imageWidth + THREAD_PER_BLOCK - 1) / THREAD_PER_BLOCK, (imageHeight + THREAD_PER_BLOCK - 1) / THREAD_PER_BLOCK);
 
-	renderMotionMapKernel << <grid, block >> > (d_x_map, d_x_rot,d_x_trans, offset, cellWH, imageWidth, imageHeight, nodeWidth, nodeHeight);
+	renderMotionMapKernel <<<grid, block >>> (d_x_map, d_x_rot,d_x_trans, offset, cellWH, imageWidth, imageHeight, nodeWidth, nodeHeight);
 
 }

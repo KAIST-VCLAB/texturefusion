@@ -110,7 +110,7 @@ namespace ml {
 				sscanf(vgafilename.data(), "vga\\%07d-000%09d.jpg", &frame, &timestamp);
 				printf("%d %d\n", frame, timestamp);
 
-				cv::Mat bgr = cv::imread(filename + "\\" + vgafilename, CV_LOAD_IMAGE_COLOR), bgra;
+				cv::Mat bgr = cv::imread(filename + "\\" + vgafilename, cv::IMREAD_COLOR), bgra;
 				if (bgr.empty())
 					continue;
 
@@ -118,7 +118,7 @@ namespace ml {
 				if (nbytes != color.size())
 					continue;
 
-				cv::cvtColor(bgr, bgr, CV_BGR2RGB);
+				cv::cvtColor(bgr, bgr, cv::COLOR_BGR2RGB);
 				memcpy_s(color.data(), nbytes, bgr.data, nbytes);
 
 				//set rgb timestamp and data
@@ -133,7 +133,7 @@ namespace ml {
 				sscanf(dfilename.data(), "depth\\%07d-000%09d.png", &frame, &timestamp);
 				printf("%d %d\n", frame, timestamp);
 
-				cv::Mat depthmat = cv::imread(filename + "\\" + dfilename, CV_LOAD_IMAGE_ANYDEPTH);
+				cv::Mat depthmat = cv::imread(filename + "\\" + dfilename, cv::IMREAD_ANYDEPTH);
 				if (depthmat.empty())
 					continue;
 				nbytes = depthmat.cols * depthmat.rows * 2;
@@ -238,10 +238,10 @@ namespace ml {
 				//read rgb image
 				std::cout << filename + "/" + vgafilename << " ";
 
-				sscanf(vgafilename.data(), "rgb/%07d-000%09d.jpg", &frame, &timestamp);
+				//sscanf(vgafilename.data(), "vga/%07d-000%09d.jpg", &frame, &timestamp);
 				printf("%d %d\n", frame, timestamp);
 
-				cv::Mat bgr = cv::imread(filename + "/" + vgafilename, CV_LOAD_IMAGE_COLOR), bgra;
+				cv::Mat bgr = cv::imread(filename + "/" + vgafilename, cv::IMREAD_COLOR);
 				if (bgr.empty())
 					continue;
 
@@ -251,7 +251,7 @@ namespace ml {
 				if (nbytes != color.size())
 					continue;
 
-				cv::cvtColor(bgr, bgr, CV_BGR2RGB);
+				cv::cvtColor(bgr, bgr, cv::COLOR_BGR2RGB);
 				memcpy_s(color.data(), nbytes, bgr.data, nbytes);
 
 				//set rgb timestamp and data
@@ -267,7 +267,7 @@ namespace ml {
 				sscanf(dfilename.data(), "depth/%07d-000%09d.png", &frame, &timestamp);
 				printf("%d %d\n", frame, timestamp);
 
-				cv::Mat depthmat = cv::imread(filename + "\\" + dfilename, CV_LOAD_IMAGE_ANYDEPTH);
+				cv::Mat depthmat = cv::imread(filename + "\\" + dfilename, cv::IMREAD_ANYDEPTH);
 				if (depthmat.empty())
 					continue;
 				nbytes = depthmat.cols * depthmat.rows * 2;
