@@ -1294,7 +1294,7 @@ namespace ml {
 						SensorData::RGBDFrame frame = sensorData->m_frames[th];
 						FrameState& fs = cache->m_data.back();
 
-						//std::cout << "decompressing frame " << cache->m_nextFromSensorData << std::endl;
+						std::cout << "decompressing frame " << cache->m_nextFromSensorData << std::endl;
 						fs.m_colorFrame = sensorData->decompressColorAlloc(frame);
 						fs.m_depthFrame = sensorData->decompressDepthAlloc(frame);
 						fs.m_bIsReady = true;

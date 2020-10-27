@@ -40,7 +40,7 @@ extern "C" void gaussFilterFloatMap(float* d_output, float* d_input, float sigma
 
 extern "C" void copyFloatMap(float* d_output, float* d_input, unsigned int width, unsigned int height);
 
-extern "C" void renderCorrespondenceCUDA(unsigned int imageWidth, unsigned int imageHeight, float *output, CameraTrackingInput cameraTrackingInput, float* intrinsics, CameraTrackingParameters cameraTrackingIParameters, float* transform);
+//extern "C" void renderCorrespondenceCUDA(unsigned int imageWidth, unsigned int imageHeight, float *output, CameraTrackingInput cameraTrackingInput, float* intrinsics, CameraTrackingParameters cameraTrackingIParameters, float* transform);
 
 
 CUDACameraTrackingMultiResRGB::CUDACameraTrackingMultiResRGB(unsigned int imageWidth, unsigned int imageHeight, unsigned int levels) {
@@ -467,7 +467,7 @@ void CUDACameraTrackingMultiResRGB::renderCorrespondence(CameraTrackingInput cam
 
 	Eigen::Matrix4f deltaTransformRowMajor = deltaTransform.transpose();
 
-	renderCorrespondenceCUDA(m_imageWidth[level],m_imageHeight[level], d_warpedModelIntensity, cameraTrackingInput, intrinsicsRowMajor.data(),cameraTrackingParameters, deltaTransformRowMajor.data());
+	//renderCorrespondenceCUDA(m_imageWidth[level],m_imageHeight[level], d_warpedModelIntensity, cameraTrackingInput, intrinsicsRowMajor.data(),cameraTrackingParameters, deltaTransformRowMajor.data());
 
 }
 

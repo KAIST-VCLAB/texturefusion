@@ -808,7 +808,7 @@ void reconstruction(ID3D11DeviceContext* pd3dImmediateContext)
 				&& !GlobalAppState::get().s_binaryDumpSensorUseTrajectoryOnlyInit) {
 
 				//actually: nothing to do here; transform is already set: just don't do icp and use pre-recorded trajectory
-
+				std::cout << transformation << std::endl;
 				//transformation = g_RGBDAdapter.getRigidTransform();
 				//if (transformation[0] == -std::numeric_limits<float>::infinity()) {
 				//	std::cout << "INVALID FRAME" << std::endl;
@@ -824,6 +824,7 @@ void reconstruction(ID3D11DeviceContext* pd3dImmediateContext)
 					&& GlobalAppState::get().s_binaryDumpSensorUseTrajectoryOnlyInit) {
 					//deltaTransformEstimate = lastTransform.getInverse() * transformation;	//simple case; not ideal in case of drift
 					//deltaTransformEstimate = g_RGBDAdapter.getRigidTransform(-1).getInverse() * transformation;
+					std::cout << transformation << std::endl;
 				}
 
 				const bool useRGBDTracking = false;	//Depth vs RGBD

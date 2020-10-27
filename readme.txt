@@ -6,8 +6,8 @@
 
 - Institute: KAIST Visual Computing Laboratory
 
-- Bibtex:	
-	
+- Bibtex:
+
 @InProceedings{Lee_2020_CVPR,
 author = {Joo Ho Lee and Hyunho Ha and Yue Dong and Xin Tong and Min H. Kim},
 title = {TextureFusion: High-Quality Texture Acquisition for Real-Time RGB-D Scanning},
@@ -35,10 +35,10 @@ year = {2020}
 
 - License: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 
-- Warranty: KAIST-VCLAB MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE 
-  SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT 
-  LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. KAIST-VCLAB SHALL NOT BE LIABLE FOR ANY 
+- Warranty: KAIST-VCLAB MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE
+  SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. KAIST-VCLAB SHALL NOT BE LIABLE FOR ANY
   DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING
   THIS SOFTWARE OR ITS DERIVATIVES
 
@@ -77,9 +77,9 @@ Contents
 --------------------------------------------------------------------------------------------------
 
 Newly added codes
--CUDACameraBuildSystemRGBLocal.cpp
--CUDACameraBuildSystemRGBLocal.cu
--CUDACameraBuildSystemRGBLocal.h
+-CUDABuildLinearSystemRGBLocal.cpp
+-CUDABuildLinearSystemRGBLocal.cu
+-CUDABuildLinearSystemRGBLocal.h
 -CUDACameraTrackingLocalRGB.cpp
 -CUDACameraTrackingLocalRGB.cu
 -CUDACameraTrackingLocalRGB.h

@@ -4,7 +4,7 @@ s_sensorIdx = 9;
 //fountail
 s_sceneName = "fountain";
 //s_binaryDumpSensorFile[0] = "data/fountain_all";
-s_binaryDumpSensorFile[0] = "D:/dataset/fountain_all";
+s_binaryDumpSensorFile[0] = "C:\Users\14109\Downloads\fountain_all\fountain_all";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // parameters for our implementation
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@ s_autoExposureEnabled = false;
 s_autoWhiteBalanceEnabled = false;
 
 s_renderToFile = false;	//for making paper videos: renders all input/raycasts etc. to images
-s_renderToFileDir = "c:/output/fountain4/";
+s_renderToFileDir = "C:\Users\14109\Downloads\fountain_all\fountain_all\test\";
 
 // Enable voxel rendering or not
 s_voxelRenderingEnabled  = false;
@@ -45,7 +45,7 @@ s_numTextureTileWidth = 1024;
 
 // About blending weights
 s_texIntegrationWeightMax = 255;
-s_texIntegrationWeightSample = 30; 
+s_texIntegrationWeightSample = 30;
 
 // parameters for mask
 s_erodeSigmaStretch = 2.f;
@@ -98,8 +98,8 @@ s_SDFIntegrationWeightMax = 255;		//maximum integration weight for a voxel
 
 // s_SDFBlockSize is pound defined (SDF_BLOCK_SIZE)
 // s_hashBucketSize is pound defined (HASH_BUCKET_SIZE)
-s_hashNumBuckets = 200000;				//smaller voxels require more space
-s_hashNumSDFBlocks = 200000;			//smaller voxels require more space
+s_hashNumBuckets = 50000;				//smaller voxels require more space
+s_hashNumSDFBlocks = 50000;			//smaller voxels require more space
 s_hashMaxCollisionLinkedListSize = 5;
 
 // raycast
@@ -149,7 +149,7 @@ s_remappingDepthDiscontinuityThresLin	 = 0.016f;	// additional discontinuity thr
 
 s_bUseCameraCalibration = false;
 s_marchingCubesMaxNumTriangles = 2500000; // max buffer size for marching cube
-							    
+
 //streaming parameters
 s_streamingEnabled = false;
 s_streamingVoxelExtents = 1.0f 1.0f 1.0f;
@@ -166,6 +166,4 @@ s_recordCompression = true;		//if recoding is enabled; then compression is used 
 s_recordDataFile = "Dump/test.sens";
 s_reconstructionEnabled = true;
 
-s_offlineProcessing = true;			//slower, but makes sure that all voxels are alllocated and streaming all blocks is enforced
-
-
+s_offlineProcessing = false;			//slower, but makes sure that all voxels are alllocated and streaming all blocks is enforced

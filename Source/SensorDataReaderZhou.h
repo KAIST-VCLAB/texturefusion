@@ -48,6 +48,8 @@ public:
 	}
 
 	std::string getSensorName() const;
+
+	mat4f getRigidTransform(int offset) const;
 	
 private:
 	//! deletes all allocated data
