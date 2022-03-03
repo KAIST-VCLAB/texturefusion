@@ -18,11 +18,25 @@ year = {2020}
 
 ## Installation
 
-Our implementation is based on the voxel hashing repository (https://github.com/niessner/VoxelHashing).
-Please follow the instruction to compile the voxel hashing repository.
-After compiling the voxel hashing repository, replace the 'Source' folder with the 'Source' folder of our implementation.
-Then, add all codes in the project and run our code. 
-The main function is in 'texture_main.cpp'.
+Our implementation is based on the original voxel hashing (https://github.com/niessner/VoxelHashing).
+
+To compile our codes, first obtain the entire source codes from the original [voxel hashing repository](https://github.com/niessner/VoxelHashing), including the Visual Studio project file. Then follow these steps:
+
+1. In `VoxelHashing/DepthSensingCUDA/`, replace the folders `Include/` and `Source/` as well as the configuration files `zParameters*.txt` with the contents of our repository.
+
+2. Replace `DepthSensing.cpp` and `DepthSensing.h` file with `texFusion.h`, `texFusion.cpp`, and `texFusion_main.cpp`
+
+3. Configure the existing files in the `Source/*.h`, `Source/*.cpp`, and `Source/*.cu` to the Visual Studio project that does not exist in the voxel hashing repository.
+
+Note that our source codes inherit the dependency of the original Voxel Hashing project.
+
+Our work requires:
+- [DirectX SDK June 2010](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
+- Both [Kinect SDK 1.8](https://www.microsoft.com/en-us/download/details.aspx?id=40278) and [Kinect SDK 2.0](https://www.microsoft.com/en-us/download/details.aspx?id=44561)
+- [CUDA](https://developer.nvidia.com/cuda-toolkit) (tested with version 10.1)
+- Both [mLib](https://github.com/niessner/mLib) and mLibExternal (http://kaldir.vc.in.tum.de/mLib/mLibExternal.zip) with [OpenCV](https://opencv.org/) (tested with version 3.4.1): Note that the zip file, mLibExternal, includes other dependent libraries such as OpenNI 2 and Eigen.
+
+Our code has been developed with Microsoft Visual Studio 2013 (VC++ 12) and Windows 10 (10.0.19041, build 19041) on a machine equipped with Intel i9-10920X (RAM: 64GB), NVIDIA TITAN RTX (RAM: 24GB). The main function is in `texFusion_main.cpp`.\
 
 ## Data
 
